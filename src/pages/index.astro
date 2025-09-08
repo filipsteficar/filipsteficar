@@ -1,9 +1,18 @@
 ---
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
+import {heroHome} from "../global";
+import FourImageGrid from '../components/FourImageGrid.astro';
 ---
 <Layout>
-	<section class="@container">
-		<Hero />
+	<section class="@container relative bg-[url(../images/design/herobg.webp)] bg-cover">
+		<!-- Overlay -->
+    	<div class="absolute inset-0 bg-zinc-950/20 backdrop-blur-md"></div>
+		<div class="relative">
+			<Hero
+			title={heroHome.title}
+			copy={heroHome.copy}
+			/>
+		</div>
 	</section>
 </Layout>
