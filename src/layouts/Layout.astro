@@ -1,22 +1,23 @@
+---
+import "../styles/global.css";
+import { siteData } from "../global";
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
 <!doctype html>
-<html lang="en">
+<html lang={siteData.lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{siteData.name}</title>
+		<!-- Umami -->
+		<script defer src="https://umami.nova.filipsteficar.com/script.js" data-website-id="74cb56c5-8e16-4b91-ad54-c3539a6dc23e"></script>
 	</head>
-	<body>
+	<body class="flex flex-col bg-zinc-950 min-h-screen font-satoshi font-normal text-zinc-300 text-base">
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
