@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+
+import {getCollection} from 'astro:content';
+
+const allArticles = await getCollection('articles', ({ data }) => {
+    return data.draft !== true;
+});
+
+const sortedArticles = allArticles.sort((a, b) => 
+    new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf()
+);
+---
+<Layout>
+    <section class="mx-auto p-4 container">
+        <div class="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {sortedArticles.map((post) => (
+            <Card
+            title={post.data.title}
+            author={post.data.author || "Unkown Author"}
+            cover={post.data.cover || "/images/articles/Lorem Picsum 1.webp"}
+            alt={post.data.alt}
+            href={`/articles/${post.slug}`}
+            loading="eager"
+            width="1200"
+            height="800" />
+            ))}
+        </div>
+    </section>
+</Layout>

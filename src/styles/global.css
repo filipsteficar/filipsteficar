@@ -29,16 +29,6 @@
     --color-primary-950: oklch(26.6% 0.079 26.069);
 }
 
-@theme inline {
-    --typography-prose-h1: var(--text-4xl);
-    --typography-prose-h2: var(--text-3xl);
-    --typography-prose-h3: var(--text-2xl);
-    --typography-prose-h4: var(--text-xl);
-    --typography-prose-h5: var(--text-lg);
-    --typography-prose-h6: var(--text-base);
-    --typography-prose-p: var(--text-base);
-}
-
 @font-face {
 	font-family: 'Satoshi';
 	src:  url('/fonts/Satoshi-Variable.woff2') format('woff2'),
