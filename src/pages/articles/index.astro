@@ -4,21 +4,20 @@ import Card from "../../components/Card.astro";
 
 import {getCollection} from 'astro:content';
 
-const allArticles = await getCollection('articles', ({ data }) => {
-    return data.draft !== true;
-});
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
 
 const sortedArticles = allArticles.sort((a, b) => 
     new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf()
 );
 ---
-<Layout>
+<Layout seoTitle="Articles Archive">
     <section class="mx-auto p-4 container">
         <div class="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {sortedArticles.map((post) => (
             <Card
             title={post.data.title}
-            author={post.data.author || "Unkown Author"}
+            author={post.data.author || "Unknown Author"}
+            date={new Date(post.data.publishDate).toLocaleDateString('en-GB')}
             cover={post.data.cover || "/images/articles/Lorem Picsum 1.webp"}
             alt={post.data.alt}
             href={`/articles/${post.slug}`}

@@ -1,7 +1,7 @@
 // Global Site Data
 export const siteData = {
     name: "Filip Steficar Art",
-    lang: "en",
+    lang: "en-GB",
     copyright: "Filip Steficar - 2025 | All Rights Reserved"
 }
 // Define the MenuItem Interface
